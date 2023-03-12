@@ -22,6 +22,13 @@ function App() {
     setData([...arr]);
   };
 
+  const handlePress = (event) => {
+    if (event.key === "Enter") {
+      addData();
+    }
+    console.log(event.key);
+  };
+
   return (
     <div className="App">
       <Header />
@@ -36,6 +43,8 @@ function App() {
         {/* form section */}
         <Stack direction="row" spacing={2}>
           <TextField
+            onKeyUp={() => window.alert("up key pressed over here")}
+            onKeyPress={(e) => handlePress(e)}
             value={form.name}
             onChange={(event) => setForm({ ...form, name: event.target.value })}
             id="outlined-basic"
@@ -43,6 +52,9 @@ function App() {
             variant="outlined"
           />
           <TextField
+            onKeyUp={() => window.alert("up key pressed over here")}
+            onKeyPress={(e) => handlePress(e)}
+            // onPaste={()=>window.alert("Don't paste over here")}
             value={form.email}
             onChange={(event) =>
               setForm({ ...form, email: event.target.value })
@@ -51,7 +63,7 @@ function App() {
             label="email"
             variant="outlined"
           />
-          <Button onClick={addData} variant="contained" color="success">
+          <Button draggable onDrag={()=>console.log("Dragged....")} onClick={addData} variant="contained" color="success">
             <AddIcon />
           </Button>
         </Stack>
