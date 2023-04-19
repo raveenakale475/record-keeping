@@ -16,7 +16,7 @@ function App() {
     setForm({ form });
   };
 
-  const removeItem = (index) => {
+  const removeItems = (index) => {
     let arr = data;
     arr.splice(index, 1);
     setData([...arr]);
@@ -30,7 +30,7 @@ function App() {
   };
 
   return (
-    <div className='App'>
+    <div className="App">
       <Header />
       <div
         style={{
@@ -83,7 +83,7 @@ function App() {
               <h4>{element.email}</h4>
               <Stack>
                 <Button
-                  onClick={() => removeItem(index)}
+                  onClick={() => removeItems(index)}
                   variant="contained"
                   color="error"
                 >
